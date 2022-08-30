@@ -9,10 +9,12 @@ or shared between of subset of endpoints if needed.
 ## Architecture
 
 ### Flow:
+```
                                            Proxy
  -----------------      ------------------------------------------------------------      ---------------
 | External Client | -> | Request -> Middlewares -> Executor <-> goroutine -> Client | -> | Origin Server |
  -----------------      ------------------------------------------------------------      ---------------
+ ```
 ### Request:
 
 Request is controlled by underlying framework. I am using default golang http server. Every request is launched in its own goroutine and kept alive in memory until logic will decide to release it. 
